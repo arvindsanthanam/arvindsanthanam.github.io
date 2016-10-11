@@ -3,7 +3,7 @@ var counties={}
 var request = new XMLHttpRequest();
 
 //Filling States
-request.open("GET", "https://api.census.gov/data/2015/acs1?get=NAME,B01003_001E&for=state:*&key=", false);
+request.open("GET", "http://api.census.gov/data/2015/acs1?get=NAME,B01003_001E&for=state:*&key=", false);
 request.send();
 request=JSON.parse(request.response)
 
@@ -15,7 +15,7 @@ for(i=1;i<=52;i++){
 
 //Filling  Counties
 request = new XMLHttpRequest();
-request.open("GET", "https://api.census.gov/data/2015/acs1?get=NAME,B01003_001E&for=county:*&key=", false);
+request.open("GET", "http://api.census.gov/data/2015/acs1?get=NAME,B01003_001E&for=county:*&key=", false);
 request.send();
 request=JSON.parse(request.response)
 for(i=1;i<=830;i++){
