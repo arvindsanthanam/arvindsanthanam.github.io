@@ -21,7 +21,6 @@ request=JSON.parse(request.response)
 for(i=1;i<=830;i++){
 	states[request[i][0].split(", ")[1]]["counties"][parseInt(request[i][3])]=request[i][0]
 }
-asd
 console.log(states)
 
 //Finding state with id = 2
