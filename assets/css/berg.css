@@ -133,6 +133,7 @@ h5,
 h6 {
   margin: 0;
   font-family: 'Raleway', sans-serif;
+  
 }
 
 
@@ -389,15 +390,31 @@ span.divider.center {
 /*---------------------------------------------------------------------*/
 #jpreOverlay {
   background-color: #0d0c0d;
+  
 }
 
 #jpreLoader {
-  width: 100%;
-  height: 5px;
+  width: 60px;
+  height: 60px;
 }
 
 #jpreBar {
-  background-color: #42aaf4;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 
@@ -633,7 +650,7 @@ header.hero.parallax-yes > .parallax > .bcg, header.hero1.parallax-yes > .parall
 
 .navbar.navbar-fixed-top .navbar-brand {
   font-family: 'Raleway', sans-serif;
-  font-size: 28px;
+  font-size: 23px;
   font-weight: 700;
   color: #a1a1a1;
   text-transform: uppercase;
@@ -1125,6 +1142,8 @@ header.hero.parallax-yes > .parallax > .bcg, header.hero1.parallax-yes > .parall
 .portfolio .item > .project-wrapper {
   position: relative;
   z-index: 5;
+  padding: 3px;
+margin: 0px;
 }
 
 .portfolio .item > .project-wrapper:before {
@@ -1155,7 +1174,7 @@ header.hero.parallax-yes > .parallax > .bcg, header.hero1.parallax-yes > .parall
 }
 
 .portfolio .item > .project-wrapper:hover > .project-link > a.external-link {
-  left: 40px;
+  left: 30px;
 }
 
 .portfolio .item > .project-wrapper:hover > .project-title > h4 {
@@ -1166,13 +1185,14 @@ header.hero.parallax-yes > .parallax > .bcg, header.hero1.parallax-yes > .parall
 .portfolio .item > .project-wrapper > .project-link {
   position: absolute;
   z-index: 20;
-  top: 50%;
+  top: 40%;
   left: 50%;
   width: 88px;
   height: 48px;
-  margin-top: -48px;
-  margin-left: -44px;
-  opacity: 0;
+  margin-top: 0px;
+  margin-left: -15px;
+opacity: 0;
+text-align: center;
 }
 
 .portfolio .item > .project-wrapper > .project-link > a {
@@ -1224,6 +1244,36 @@ header.hero.parallax-yes > .parallax > .bcg, header.hero1.parallax-yes > .parall
   .filterable-portfolio-nav a {
     margin-bottom: 15px;
   }
+}
+@media (min-width: 770px) and (max-width: 1200px)
+{
+	.crsl-1{height:170px !important}
+	.crsl-1 img{height:150px !important}
+}
+@media (min-width: 680px) and (max-width: 769px)
+{
+	.crsl-1{height:145px !important}
+	.crsl-1 img{height:130px !important}
+}
+@media (min-width: 590px) and (max-width: 679px)
+{
+	.crsl-1{height:125px !important}
+	.crsl-1 img{height:100px !important}
+}
+@media (min-width: 495px) and (max-width: 589px)
+{
+	.crsl-1{height:103px !important}
+	.crsl-1 img{height:80px !important}
+}
+@media (min-width: 400px) and (max-width: 494px)
+{
+	.crsl-1{height:85px !important}
+	.crsl-1 img{height:60px !important}
+}
+@media (min-width: 300px) and (max-width: 399px)
+{
+	.crsl-1{height:75px !important}
+	.crsl-1 img{height:55px !important}
 }
 
 
@@ -2929,7 +2979,7 @@ footer.footer .copyright {
 footer.footer .copyright p {
   font-size: 14px;
 }
-.prod{padding: 0px 10%;}
+.prod{padding: 0px 9%;}
 .prod h1{
 	font-size: 20px;
 color: #42aaf4;
@@ -2952,7 +3002,10 @@ font-size: 20px;
 padding-top:0px !important;
 margin-bottom: 0px;
 }
-.icon-Home-4{font-weight: bold;
+.proto a:hover, .proto:hover{
+	color:#fff;
+}
+.icon-Home-4, .fa-home{font-weight: bold;font-size: 27px;
 color: #42aaf4;}
 .project-para{padding: 50px;}
 .project-para h1{font-size: 21px;
@@ -3065,5 +3118,30 @@ padding-top: 0px;padding-bottom:10px}
 {
 	.crsl1, .crsl2{display:none }
 	
+}
+.modal{top:75px !important;padding-top: 30px;}
+.thumbnail img{height:100%}
+
+#lightbox .modal-content {
+    display: inline-block;
+    text-align: center;   
+}
+
+#lightbox .close {
+    opacity: 1;
+    color: rgb(255, 255, 255);
+    background-color: rgb(25, 25, 25);
+    padding: 1px 8px 4px 8px;
+border-radius: 50px;
+border: 2px solid rgb(255, 255, 255);
+position: absolute;
+top: -14px;
+right: -55px;
+    z-index:1032;
+}
+
+
+.prod-1{
+    padding: 0px 5%;
 }
 

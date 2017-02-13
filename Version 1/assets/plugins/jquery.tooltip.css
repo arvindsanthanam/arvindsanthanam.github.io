@@ -1,0 +1,99 @@
+div.jquery-gdakram-tooltip { 
+  width: 340px;
+  color: white;
+  font-size: 12px;
+	position: absolute;
+	z-index: 10000;
+	top: 0px;
+	left: 0px;
+	display: none;
+}
+
+div.jquery-gdakram-tooltip div.content { 
+  -moz-border-radius: 1em; 
+  -webkit-border-radius: 1em;
+  background-color: #3b8ed6;
+  width: 280px;
+  min-height: 200px;
+  float: left;
+  padding: 10px;
+  font-family: 'Lato', sans-serif;
+  font-size:14px;
+  text-align:justify;
+}
+
+div.jquery-gdakram-tooltip div.content h1 {
+  font-size: 16px;
+  border-bottom: 1px solid #C4C4C4;
+  padding-bottom: 5px;
+}
+
+div.jquery-gdakram-tooltip div.up_arrow {
+  background : url('../images/up_arrow.png') 60px 0px no-repeat;
+  width: 100%;
+  height: 20px;
+}
+
+div.jquery-gdakram-tooltip div.down_arrow {
+  background : url('../images/down_arrow.png') 60px 0px no-repeat;
+  width: 100%;
+  height: 20px;
+}
+
+div.jquery-gdakram-tooltip div.left_arrow {
+  height: 100%;
+}
+
+div.jquery-gdakram-tooltip div.left_arrow {
+  float:left;
+  background : url('../images/left_arrow.png') 0px 0px no-repeat;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: 40px;
+  left: 0px;
+}
+
+
+
+@media (min-width: 740px) and (max-width: 992px) 
+{
+.project-para {
+    padding: 20px 0px;
+}
+.prod {
+    padding: 0px 3%;
+}
+}
+@media (min-width: 650px) and (max-width: 739px) 
+{
+	div.jquery-gdakram-tooltip div.content {width:200px;}
+	.project-para {
+    padding: 20px 0px;
+}
+.prod {
+    padding: 0px 3%;
+}
+}
+@media (min-width: 531px) and (max-width: 649px) 
+{
+	div.jquery-gdakram-tooltip div.content {width:150px;}
+	.challenge img{width:100%}
+	.project-para {
+    padding: 20px 0px;
+}
+.prod {
+    padding: 0px 3%;
+}
+}
+@media (min-width: 200px) and (max-width: 530px) 
+{
+	div.jquery-gdakram-tooltip div.content, div.jquery-gdakram-tooltip div.down_arrow, div.jquery-gdakram-tooltip .up_arrow, div.jquery-gdakram-tooltip div.left_arrow {display:none !important}
+.project-para {
+    padding: 20px 0px;
+}
+.prod {
+    padding: 0px 3%;
+}
+}
+
