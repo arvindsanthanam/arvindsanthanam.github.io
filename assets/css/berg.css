@@ -963,7 +963,7 @@ header.hero.parallax-yes > .parallax > .bcg, header.hero1.parallax-yes > .parall
 /*  6.1. SECTION - PROFILE
 /*---------------------------------------------------------------------*/
 #profile {
-  background-color: #0d0c0d;
+  background-color: #171717;
 }
 
 @media (min-width: 992px) {
@@ -1122,7 +1122,7 @@ header.hero.parallax-yes > .parallax > .bcg, header.hero1.parallax-yes > .parall
 #portfolio {
   position: relative;
   z-index: 5;
-  background-color: #171717;
+  background-color: black;
 }
 
 #portfolio .section-wrapper > .section-content {
