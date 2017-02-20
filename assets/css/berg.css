@@ -82,7 +82,7 @@ html {
 
 body {
   background-color: #0d0c0d;
-  font-family: 'Lato', sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 16px;
   color: #ffffff;
   line-height: 25px;
@@ -133,7 +133,6 @@ h5,
 h6 {
   margin: 0;
   font-family: 'Raleway', sans-serif;
-  
 }
 
 
@@ -963,7 +962,7 @@ header.hero.parallax-yes > .parallax > .bcg, header.hero1.parallax-yes > .parall
 /*  6.1. SECTION - PROFILE
 /*---------------------------------------------------------------------*/
 #profile {
-  background-color: #171717;
+  background-color: #0d0c0d;
 }
 
 @media (min-width: 992px) {
@@ -1122,7 +1121,7 @@ header.hero.parallax-yes > .parallax > .bcg, header.hero1.parallax-yes > .parall
 #portfolio {
   position: relative;
   z-index: 5;
-  background-color: black;
+  background-color: #171717;
 }
 
 #portfolio .section-wrapper > .section-content {
@@ -1186,13 +1185,14 @@ margin: 0px;
   position: absolute;
   z-index: 20;
   top: 40%;
-  left: 50%;
+  left: 45%;
   width: 88px;
   height: 48px;
   margin-top: 0px;
   margin-left: -15px;
 opacity: 0;
 text-align: center;
+
 }
 
 .portfolio .item > .project-wrapper > .project-link > a {
@@ -1211,12 +1211,18 @@ text-align: center;
 .portfolio .item > .project-wrapper > .project-link > a.zoom {
   left: 40px;
   background-color: #2e2e2e;
+ 
 }
 
 .portfolio .item > .project-wrapper > .project-link > a.external-link {
   left: 0;
   background-color: #42aaf4;
 }
+.prod2{font-size: 20px;
+color: #42aaf4;
+letter-spacing: 1px;
+padding-bottom: 10px;text-align: left !important;}
+.prod2 span{color:#fff; font-size:16px}
 
 .portfolio .item > .project-wrapper > .project-title > h4 {
   display: block;
@@ -2995,21 +3001,27 @@ line-height: 25px;text-align:center}
 .challenge p{
 	padding-top:20px;text-align:justify
 }
-.proto a, .proto{
+.proto a, .proto, .proto2{
 	text-align: center !important;
-color: #42aaf4;
+color: #fff;
 font-size: 20px;
 padding-top:0px !important;
 margin-bottom: 0px;
 }
+.proto{border: 1px solid #31aaf4;
+width: 300px;
+margin: 0 auto;
+padding: 8px 14px !important;
+border-radius: 6px;
+margin-top: 20px;    overflow: hidden;}
 .proto a:hover, .proto:hover{
-	color:#fff;
+	color:#42aaf4;
 }
 .icon-Home-4, .fa-home{font-weight: bold;font-size: 27px;
 color: #42aaf4;}
 .project-para{padding: 50px;}
 .project-para h1{font-size: 21px;
-font-weight: bold;
+
 padding-bottom: 20px;}
 .project-para p{text-align:justify}
 .project-wrapper{margin-bottom: 30px;}
@@ -3144,4 +3156,6 @@ right: -55px;
 .prod-1{
     padding: 0px 5%;
 }
+
+.thumbnail1 img{height: auto !important;}
 

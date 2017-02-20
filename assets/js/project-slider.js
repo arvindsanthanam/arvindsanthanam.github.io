@@ -6,7 +6,7 @@ $(function(){
     $(window).smartload(function(){
         $('.owl-carousel').owlCarousel({
             autoPlay: true,
-            slideSpeed : 500,
+            slideSpeed : 5000,
             paginationSpeed : 600,
             singleItem: true
         });
