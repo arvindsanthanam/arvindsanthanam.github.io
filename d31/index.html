@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3Project</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js" charset="utf-8"></script>
+
+		<!-- Angular Material style sheet -->
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+		<!--<link rel="stylesheet" type="text/css" href="_/base.css">-->
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+
+	<body ng-app="MyApp" ng-controller="AppCtrl" ng-cloak>
+	
+		<div>
+			<div style="z-index: 10; position: fixed; background-color:whitesmoke; left: 840px; height: 100%; width: 100%;">
+				<div><strong style="font-size: 17px">&nbsp;&nbsp;&emsp;&emsp;Energy Visualization of  Data from the <br>&emsp;&emsp;&nbsp;&nbsp;US Energy Infromation Administration</strong><br><a style="margin-left: 215px; font-size: 15px" href="./documentation.pdf" target="_blank">Documentation>>></a></div>
+				<div style="padding-left:35px;">
+					<label ng-hide=compareVariables>&emsp;&emsp;&emsp;&emsp;Select Graph to work on:</label><br>
+					<select style="width:300px" ng-hide=compareVariables ng-model="graphChoice" id="graphSelector" ng-change="graphChange()"></select><br><br>
+					<form ng-hide=compareVariables id="graphType">
+						<input type="radio" name="chartType" ng-model="chartType" ng-change="changeGraph()" value="lineChart" checked> Line Chart
+						<input type="radio" name="chartType" ng-model="chartType" ng-change="changeGraph()" value="barChart"> Bar Chart
+						<input type="radio" name="chartType" ng-model="chartType" ng-change="scatterGraph()" value="scatterPlot"> Scatter Plot
+					</form>	
+					<div>
+						<label ng-hide=makeScatterPlot><br/>------------------------Variable1------------------------<br/></label>
+						<label>Locality:<br/></label>
+						<select ng-model="localityChoice" ng-change="addGraph()" id="localitySelector"></select>
+					</div>
+					
+					<label ng-hide=compareVariables>Dataset:<br/></label>		
+					
+					<select ng-model="dataSetChoice" ng-change="dataTypeChange()" ng-hide=compareVariables id="dataSetSelect">
+						<option value="Total Primary Energy">Total Primary Energy</option>
+						<option value="Total Electricity">Total Electricity</option>
+						<option value="Renewable Electricity">Renewable Electricity</option>
+						<option value="Renewable Biofuels">Renewable Biofuels</option>
+						<option value="Petroleum">Petroleum</option>
+						<option value="Coal">Coal</option>
+						<option value="Energy-Related CO2 Emisions">Energy-Related CO2 Emisions</option>
+					</select>
+					<label ng-hide=compareVariables><br/></label><label ng-hide=!compareVariables>Variable:</label>
+					<label ng-hide=compareVariables>Variable: &emsp; &emsp; &nbsp; &nbsp; From: &nbsp;&nbsp; To:</label><br/>		
+					
+					<select ng-model="variableChoice" ng-change="addGraph()" id="variableSelector">
+					</select>
+
+					<select ng-hide=compareVariables ng-model="fromDate" id="from" ng-change="changeTo()">
+						<option ng-repeat="x in from" value={{x}}>{{x}}</option>
+					</select>
+					
+					<select ng-hide=compareVariables ng-model="toDate" id="to" ng-disabled='!fromEntered' style="width:60px">
+						<option ng-repeat="x in to" value={{x}}>{{x}}</option>
+					</select>
+					<div>
+						<label ng-hide=makeScatterPlot><br/>------------------------Variable2------------------------<br/></label>
+						<label ng-hide=makeScatterPlot>Locality:<br/></label>
+						<select ng-hide=makeScatterPlot ng-model="scatter_localityChoice" id="scatter_localitySelector"></select>
+					</div>
+					<label ng-hide=makeScatterPlot>Dataset:<br/></label>		
+					
+					<select ng-hide=makeScatterPlot ng-model="scatter_dataSetChoice" ng-change="scatter_dataTypeChange()" id="scatter_dataSetSelect">
+						<option value="Total Primary Energy">Total Primary Energy</option>
+						<option value="Total Electricity">Total Electricity</option>
+						<option value="Renewable Electricity">Renewable Electricity</option>
+						<option value="Renewable Biofuels">Renewable Biofuels</option>
+						<option value="Petroleum">Petroleum</option>
+						<option value="Coal">Coal</option>
+						<option value="Energy-Related CO2 Emisions">Energy-Related CO2 Emisions</option>
+					</select>
+					<label ng-hide=makeScatterPlot><br/>Variable:<br/></label>		
+					
+					<select ng-hide=makeScatterPlot ng-model="scatter_variableChoice" id="scatter_variableSelector">
+					</select>
+					<div>
+						<label ng-hide=makeScatterPlot2>------------------------Variable3------------------------<br/></label>
+						<label ng-hide=makeScatterPlot2>Locality:<br/></label>
+						<select ng-hide=makeScatterPlot2 ng-model="scatter2_localityChoice" id="scatter2_localitySelector"></select>
+					</div>
+					<label ng-hide=makeScatterPlot2>Dataset:<br/></label>		
+					
+					<select ng-model="scatter2_dataSetChoice" ng-change="scatter2_dataTypeChange()" ng-hide=makeScatterPlot2 id="scatter2_dataSetSelect">
+						<option value="Total Primary Energy">Total Primary Energy</option>
+						<option value="Total Electricity">Total Electricity</option>
+						<option value="Renewable Electricity">Renewable Electricity</option>
+						<option value="Renewable Biofuels">Renewable Biofuels</option>
+						<option value="Petroleum">Petroleum</option>
+						<option value="Coal">Coal</option>
+						<option value="Energy-Related CO2 Emisions">Energy-Related CO2 Emisions</option>
+					</select>
+					<label ng-hide=makeScatterPlot2><br/>Variable:<br/></label>
+
+					<select ng-hide=makeScatterPlot2 ng-model="scatter2_variableChoice" id="scatter2_variableSelector">
+					</select>
+					<br ng-hide=makeScatterPlot2/>
+
+					
+					<md-button ng-hide=makeScatterPlot class="md-raised md-primary" id="graphchanger" ng-click="scatterGraph()"> View </md-button>
+					<md-button ng-hide="compareVariables || !makeScatterPlot" class="md-raised md-primary" id="graphchanger" ng-click="changeGraph()"> View </md-button>
+
+					<md-button ng-show="!makeScatterPlot && makeScatterPlot2" class="md-raised md-primary" id="variableAdder" ng-click="scatter()"> Add Variable </md-button>
+
+					<md-button ng-hide=makeScatterPlot2  class="md-raised md-primary" id="variableAdder" ng-click="scatter()"> Remove Variable </md-button>
+					<md-button class="md-raised md-primary" id="graphcomparer" ng-click="compareGraph()" ng-show="!compareVariables && makeScatterPlot">Compare</md-button>
+					<md-button ng-hide=!compareVariables class="md-raised md-warn" ng-click="compareVariables=!compareVariables" >Cancel</md-button>
+					<md-button ng-hide=compareVariables class="md-raised md-warn" id="graphclearer" ng-click="remGraph()" >Delete</md-button>
+					<br/>
+				</div>
+			</div>
+		</div>
+		<!-- Angular Material requires Angular.js Libraries -->
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+		<!-- Angular Material Library -->
+		<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="draw_functions.js"></script>
+		<script type="text/javascript" src="load_all_csv.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+	</body>
+</html>
